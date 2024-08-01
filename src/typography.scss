@@ -1,0 +1,86 @@
+@import "variables.scss";
+
+html {
+  font-family: $font-family-one;
+  font-weight: normal;
+  font-size: $font-size-base;
+  color: $color-nine;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-family-two;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: line-through;
+  text-shadow: 2px -4px 6px red;
+  text-align: center;
+}
+
+h1 + p {
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: calc($spacing / 2);
+}
+
+li {
+  margin-bottom: calc($spacing / 2);
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+span {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+ol {
+  list-style-type: none;
+}
+
+button,
+a,
+input {
+  font-size: 1rem;
+}
+
+button,
+a {
+  border: 0;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+select {
+  padding: calc($spacing / 2);
+  margin-bottom: calc($spacing / 2);
+  font-size: $font-size-base;
+  color: $color-nine;
+  cursor: pointer;
+}
+
+table {
+  font-size: $font-size-base;
+  color: $color-nine;
+}
+
+thead {
+  color: $color-one;
+  background-color: $color-nine;
+}
