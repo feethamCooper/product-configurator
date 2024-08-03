@@ -28,8 +28,9 @@ Other points worth mentioning:
 - This application uses typescript to help with scalability, so types for this project can be found in src/types/index.ts.
 - This application uses unit tests to help with scalability, so any tests associated with a file can be found in the same folder as where the test subject is located I.e. src/hooks/useProduct.test.ts
 
-### Future Improvments:
+### Future Improvements:
 
+- Add a loading state.
 - Increased test coverage of codebase, since this is a tech exam I've only written 2 sample unit tests.
 - Instead of having my "fakeApi" implmentation, I would have prefered to mock repsonses using something like Jest mock.
 - Instead of use my current Zustand implmentation (for caching/state management) and custom API query functions (and assuming I had a real API). I would have liked to have use something like SWR/React Query to simplify the code and make a more robust solution.
