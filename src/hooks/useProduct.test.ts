@@ -1,5 +1,5 @@
 import { act } from "react";
-import { renderHook, waitFor } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import { HARDCOVER_NOTEBOOK_PRODUCT_ID } from "utils/constants";
 import useProduct from "./useProduct";
 
