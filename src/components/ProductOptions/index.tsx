@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { JSX } from "react/jsx-runtime";
 import useProduct from "hooks/useProduct";
-import { IProducAttribute } from "types";
+import { IProducAttribute, TProducAttributeType } from "types";
 import { PRODUCT_ATTRIBUTE_TYPES } from "utils/constants";
 
 import "./ProductOptions.scss";
@@ -56,7 +56,7 @@ const ProductOptions: FC = () => {
     if (!allOptions) return null;
     const optionsToRender: JSX.Element[] = [];
     Object.keys(allOptions).forEach((key, index) => {
-      const typeKey = key as keyof typeof PRODUCT_ATTRIBUTE_TYPES;
+      const typeKey = key as TProducAttributeType;
       const optionGroup = allOptions[typeKey];
 
       if (!optionGroup || !optionGroup.selectable) return;

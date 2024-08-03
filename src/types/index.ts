@@ -23,12 +23,14 @@ export interface IProductsListApiData {
   products: IProductApiData[];
 }
 
+export type TProducAttributeType = keyof typeof PRODUCT_ATTRIBUTE_TYPES;
+
 /*
  App shapes
 */
 export interface IProducAttribute {
   id: string;
-  type: keyof typeof PRODUCT_ATTRIBUTE_TYPES;
+  type: TProducAttributeType;
   value: string | number;
   label: string;
   selectable: boolean;
@@ -45,7 +47,7 @@ export interface IProduct {
 }
 
 export type TProductOptions = {
-  [key in keyof typeof PRODUCT_ATTRIBUTE_TYPES]?: {
+  [key in TProducAttributeType]?: {
     selectable: boolean;
     options: IProducAttribute[];
   };

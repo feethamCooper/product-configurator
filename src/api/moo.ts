@@ -1,6 +1,6 @@
 import fakeApiFech from "fakeAPI";
 import { tryAndCatch, onError } from "utils";
-import { IProduct, IProductsListApiData } from "types";
+import { IProduct, IProductsListApiData, TProducAttributeType } from "types";
 import { PRODUCT_IMAGE_PATH, PRODUCT_ATTRIBUTE_TYPES } from "utils/constants";
 
 export const getProductByProductId = async (
@@ -18,11 +18,11 @@ export const getProductByProductId = async (
     if (!data?.products) return [];
 
     const attributeTypes: {
-      [key: string]: keyof typeof PRODUCT_ATTRIBUTE_TYPES;
+      [key: string]: TProducAttributeType;
     } = {};
 
     for (const [key, value] of Object.entries(PRODUCT_ATTRIBUTE_TYPES)) {
-      attributeTypes[value.key] = key as keyof typeof PRODUCT_ATTRIBUTE_TYPES;
+      attributeTypes[value.key] = key as TProducAttributeType;
     }
 
     const products: IProduct[] = data.products.map((product) => {
