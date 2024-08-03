@@ -1,0 +1,23 @@
+@import "variables.scss";
+
+.product-summary {
+  &__title {
+    margin: 0 0 calc($spacing / 2) 0;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__row {
+    border-top: 1px solid $color-three;
+  }
+
+  &__th,
+  &__td {
+    padding: calc($spacing / 2) 0;
+    text-align: left;
+    font-weight: normal;
+  }
+}
