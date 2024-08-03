@@ -5,6 +5,12 @@
   max-width: 1024px;
   margin: auto;
 
+  &__spinner {
+    width: 150px;
+    margin: auto;
+    opacity: 0.7;
+  }
+
   &__title {
     font-size: $font-size-large * 2;
     text-align: left;

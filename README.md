@@ -30,7 +30,6 @@ Other points worth mentioning:
 
 ### Future Improvements:
 
-- Add a loading state.
 - Increased test coverage of codebase, since this is a tech exam I've only written 2 sample unit tests.
 - Instead of having my "fakeApi" implmentation, I would have prefered to mock repsonses using something like Jest mock.
 - Instead of use my current Zustand implmentation (for caching/state management) and custom API query functions (and assuming I had a real API). I would have liked to have use something like SWR/React Query to simplify the code and make a more robust solution.
