@@ -8,7 +8,7 @@
   &__title {
     font-size: $font-size-large * 2;
     text-align: left;
-    margin: 0 calc($spacing / 2);
+    margin: 0 0 calc($spacing / 2) 0;
   }
 
   &__inner {
@@ -19,7 +19,6 @@
   &__image-container,
   &__content {
     width: 100%;
-    margin: calc($spacing / 2);
     box-sizing: border-box;
     text-align: left;
   }
@@ -51,6 +50,10 @@
 
     &__inner {
       flex-direction: row;
+    }
+
+    &__content {
+      margin-left: $spacing;
     }
 
     &__image-container,
