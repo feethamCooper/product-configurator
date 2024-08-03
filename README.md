@@ -1,6 +1,41 @@
-# Getting Started with Create React App
+# Moo Tech Exam
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+A deployed version can be found @ https://product-configurator.cooperfeetham.com/
+
+# About
+
+I've tried building this application in such a way, that it can be as flexible as possible for a product to have many customisable attributes.
+Most of this functionlity was based on the assumption that any "type" of attribute in which none of it's values are selectable, is that this
+attribute type should be abstracted away from the user. Only leaving the user with attributes they can select (i.e. all attribute values
+are selectable) or partial select (I.e. some attribute values are selectable).
+
+The applications data comes from a faked API response, that when called provides a promise that resolves after a random number of seconds. See src/fakeAPI.
+
+Most of the data side of the application is handled by the useProduct (src/hooks/useProduct.ts) hook, this hook provides:
+
+- Application states relating to the products (using Zustand).
+- A function for calling product API.
+- Functions for storing and structuring product data to be cosumed by the app and it's components.
+
+The applications UI is made up of three components: ProductDetail, ProductOptions & ProductSummary (all of which can be found in src/components). These components use SASS (BEM) for there styling, as well as the useProuct hook for their state management.
+
+Other points worth mentioning:
+
+- Supporting functions (currently only relating to error managment), can be found in src/utils.
+- App constants relative to the use of the product API and useProduct hook, can be found in src/utils.
+- This application uses typescript to help with scalability, so types for this project can be found in src/types/index.ts.
+- This application uses unit tests to help with scalability, so any tests associated with a file can be found in the same folder as where the test subject is located I.e. src/hooks/useProduct.test.ts
+
+### Future Improvments:
+
+- Increased test coverage of codebase, since this is a tech exam I've only written 2 sample unit tests.
+- Instead of having my "fakeApi" implmentation, I would have prefered to mock repsonses using something like Jest mock.
+- Instead of use my current Zustand implmentation (for caching/state management) and custom API query functions (and assuming I had a real API). I would have liked to have use something like SWR/React Query to simplify the code and make a more robust solution.
+- Complete and accesbility pass using a screen reader to make sure the correct HTML tags are being used, and the page makes sense in a linear context.
+- Replace images to use more modern image formats like webp, or convert what images I can to SVG. Perhaps use responsive images.
+- Refactor my SASS colour var to a SASS variables map. Or perhaps used CSS variables.
 
 ## Available Scripts
 
