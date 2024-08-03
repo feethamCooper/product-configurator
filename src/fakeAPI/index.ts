@@ -1,6 +1,6 @@
 import jsonData from "./productOptionsData.json";
 
-const fetchProductData = (): Promise<{ status: number; body: string }> => {
+const fakeApiFech = (): Promise<any> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -11,4 +11,4 @@ const fetchProductData = (): Promise<{ status: number; body: string }> => {
   });
 };
 
-export default fetchProductData;
+export default fakeApiFech;
