@@ -1,13 +1,15 @@
-$font-size-base: 16px;
-$font-family-one: Georgia, serif;
-$font-family-two: "Denk One", sans-serif;
-$color-one: #fff;
-$color-two: #646b78;
-$color-three: #4f5765;
-$color-four: #444c5b;
-$color-five: #424a5a;
-$color-six: #424a59;
-$color-seven: #252a32;
-$color-eight: #ed433a;
-$color-nine: #000;
+$font-size-base: 21px;
+$font-size-large: 24px;
+$font-family-one: "Roboto", serif;
+$color-one: #363636;
+$color-two: #1f1f1f;
+$color-three: #a3a3a3;
+$color-four: #00cc99;
 $spacing: 20px;
+
+$x-small-screen: 400px;
+$small-screen: 768px;
+$medium-screen: 1024px;
+$large-screen: 1230px;
+
+$max-width: 1024px;

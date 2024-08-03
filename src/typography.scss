@@ -4,27 +4,19 @@ html {
   font-family: $font-family-one;
   font-weight: normal;
   font-size: $font-size-base;
-  color: $color-nine;
+  color: $color-one;
 }
 
 h1,
 h2,
 h3 {
-  font-family: $font-family-two;
+  font-family: $font-family-one;
+  color: $color-two;
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: $font-size-large;
   font-weight: normal;
-  line-height: 1;
-  text-transform: uppercase;
-  text-decoration: line-through;
-  text-shadow: 2px -4px 6px red;
-  text-align: center;
-}
-
-h1 + p {
-  font-size: 2rem;
 }
 
 p {
@@ -60,6 +52,7 @@ input {
 
 button,
 a {
+  font-family: $font-family-one;
   border: 0;
   background-color: transparent;
   &:hover {
@@ -71,16 +64,15 @@ select {
   padding: calc($spacing / 2);
   margin-bottom: calc($spacing / 2);
   font-size: $font-size-base;
-  color: $color-nine;
+  color: $color-one;
   cursor: pointer;
 }
 
 table {
   font-size: $font-size-base;
-  color: $color-nine;
+  color: $color-one;
 }
 
 thead {
   color: $color-one;
-  background-color: $color-nine;
 }
