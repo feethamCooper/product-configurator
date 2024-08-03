@@ -55,6 +55,8 @@ a {
   font-family: $font-family-one;
   border: 0;
   background-color: transparent;
+  color: $color-one;
+
   &:hover {
     cursor: pointer;
   }
