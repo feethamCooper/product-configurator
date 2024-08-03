@@ -1,0 +1,46 @@
+@import "variables.scss";
+
+$rightMargin: calc($spacing / 2);
+
+.product-options {
+  margin-bottom: $spacing;
+
+  &__title {
+    font-size: $font-size-large;
+    font-weight: 500;
+    margin-bottom: calc($spacing / 2);
+  }
+  &__ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  &__li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__button {
+    padding: calc($spacing / 4) calc($spacing / 2);
+    width: calc(50% - $rightMargin);
+    text-align: left;
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: $color-three;
+
+    &--active {
+      border-color: $color-four;
+    }
+
+    &--disalbed {
+      opacity: 0.6;
+    }
+
+    &:first-of-type {
+      margin-right: $rightMargin;
+    }
+  }
+}
