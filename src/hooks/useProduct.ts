@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { create } from "zustand";
 import { getProductByProductId } from "api/moo";
 import {
@@ -7,7 +7,7 @@ import {
   TProductOptions,
   IUseProductStore,
 } from "types";
-import { onError } from "utils";
+import { debounce, onError } from "utils";
 
 const useProductStore = create<IUseProductStore>((set) => ({
   products: [],
@@ -19,7 +19,6 @@ const useProductStore = create<IUseProductStore>((set) => ({
 }));
 
 const useProduct = () => {
-  const apiCalled = useRef<boolean>(false);
   const products = useProductStore((state) => state.products);
   const selectedOptions = useProductStore((state) => state.selectedOptions);
   const allOptions = useProductStore((state) => state.allOptions);
@@ -27,23 +26,27 @@ const useProduct = () => {
   const setSelectedOptions = useProductStore(
     (state) => state.setSelectedOptions
   );
+
   const setProducts = useProductStore((state) => state.setProducts);
 
   const getProducts = async (productId: string) => {
-    if (!apiCalled.current && !products.length) {
-      apiCalled.current = true;
+    if (!products.length) {
       const products = await getProductByProductId(productId);
       setProducts(products);
       getAllOptions(products);
     }
   };
 
+  const debounceGetProducts = debounce(getProducts, 1000);
+
   const getAllOptions = (products: IProduct[]) => {
     if (!products.length) {
       onError("useProduct - getAllOptions - no products avaible");
       return;
     }
+
     const allOptions: TProductOptions = {};
+
     products.forEach((product) => {
       product.attributes.forEach((attribute) => {
         const addAttributeTypeGrouping = !(attribute.type in allOptions);
@@ -74,7 +77,6 @@ const useProduct = () => {
 
   const selectedProduct: IProduct | undefined = useMemo(() => {
     if (!selectedOptions.length) return products[0];
-    console.log("selectedProduct");
     const matchingProduct = products.find((product) => {
       return product.attributes.every((option) => {
         const selectedOption = selectedOptions.find(
@@ -96,7 +98,7 @@ const useProduct = () => {
     selectedOptions,
     products,
     selectedProduct,
-    getProducts,
+    getProducts: debounceGetProducts,
     setSelectedOptions,
   };
 };

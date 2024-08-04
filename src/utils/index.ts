@@ -9,3 +9,13 @@ export const tryAndCatch = (func: Function, errorMessage: string = "") => {
 export const onError = (errorMessage: string = "", error?: any) => {
   console.error(`Error - ${errorMessage}`, error);
 };
+
+export const debounce = (func: Function, timeout: number = 300) => {
+  let timer: NodeJS.Timeout;
+  return (...args: any[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+};

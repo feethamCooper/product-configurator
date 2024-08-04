@@ -14,8 +14,13 @@ describe("useProduct hook", () => {
   });
 
   test("should be populated with correct for allOptions, products, selectedProduct when getProducts is called getProducts", async () => {
+    jest.useFakeTimers();
     const { result } = renderHook(() => useProduct());
-    await act(() => result.current.getProducts(HARDCOVER_NOTEBOOK_PRODUCT_ID));
+    await act(() => {
+      result.current.getProducts(HARDCOVER_NOTEBOOK_PRODUCT_ID);
+      jest.runAllTimers();
+    });
+
     expect(result.current.allOptions).toBeDefined();
     expect(result.current.selectedOptions.length).toBe(0);
     expect(result.current.products.length).toBeGreaterThan(0);

@@ -7,7 +7,7 @@ const fakeApiFech = (): Promise<any> => {
         status: 200,
         body: JSON.stringify(jsonData),
       });
-    }, Math.floor(Math.random() * 5 + 1) * 1000);
+    }, Math.floor(Math.random() * 2 + 1) * 1000);
   });
 };
 

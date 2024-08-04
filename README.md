@@ -30,7 +30,7 @@ Other points worth mentioning:
 
 ### Future Improvements:
 
-- Increased test coverage of codebase, since this is a tech exam I've only written 2 sample unit tests.
+- Increased test coverage of codebase, since this is a tech exam I've only written 3 sample unit tests.
 - Instead of having my "fakeApi" implmentation, I would have prefered to mock repsonses using something like Jest mock.
 - Instead of use my current Zustand implmentation (for caching/state management) and custom API query functions (and assuming I had a real API). I would have liked to have use something like SWR/React Query to simplify the code and make a more robust solution.
 - Complete and accesbility pass using a screen reader to make sure the correct HTML tags are being used, and the page makes sense in a linear context.
