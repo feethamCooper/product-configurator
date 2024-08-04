@@ -8,11 +8,11 @@ import { HARDCOVER_NOTEBOOK_PRODUCT_ID } from "utils/constants";
 import "./ProductDetail.scss";
 
 const ProductDetail: FC = () => {
-  const { products, getProducts, selectedProduct } = useProduct();
+  const { getProducts, selectedProduct } = useProduct();
 
   useEffect(() => {
-    if (!products.length) getProducts(HARDCOVER_NOTEBOOK_PRODUCT_ID);
-  }, [getProducts, products, selectedProduct, selectedProduct]);
+    getProducts(HARDCOVER_NOTEBOOK_PRODUCT_ID);
+  }, [getProducts]);
 
   return (
     <article className="product-detail">

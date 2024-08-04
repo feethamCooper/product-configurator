@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { create } from "zustand";
 import { getProductByProductId } from "api/moo";
 import {
@@ -17,15 +17,20 @@ const useProductStore = create<IUseProductStore>((set) => ({
 }));
 
 const useProduct = () => {
+  const apiCalled = useRef<boolean>(false);
   const products = useProductStore((state) => state.products);
   const selectedOptions = useProductStore((state) => state.selectedOptions);
   const setSelectedOptions = useProductStore(
     (state) => state.setSelectedOptions
   );
   const setProducts = useProductStore((state) => state.setProducts);
+
   const getProducts = async (productId: string) => {
-    const products = await getProductByProductId(productId);
-    setProducts(products);
+    if (!apiCalled.current && !products.length) {
+      apiCalled.current = true;
+      const products = await getProductByProductId(productId);
+      setProducts(products);
+    }
   };
 
   const allOptions = useMemo(() => {
