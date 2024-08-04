@@ -55,7 +55,9 @@ export type TProductOptions = {
 
 export interface IUseProductStore {
   products: IProduct[];
+  allOptions: TProductOptions | undefined;
   selectedOptions: IProducAttribute[];
   setProducts: (products: IProduct[]) => void;
   setSelectedOptions: (selectedOptions: IProducAttribute[]) => void;
+  setAllOptions: (allOptions: TProductOptions) => void;
 }

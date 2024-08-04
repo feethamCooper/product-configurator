@@ -12,6 +12,8 @@ import { onError } from "utils";
 const useProductStore = create<IUseProductStore>((set) => ({
   products: [],
   selectedOptions: [],
+  allOptions: undefined,
+  setAllOptions: (allOptions) => set({ allOptions }),
   setSelectedOptions: (selectedOptions) => set({ selectedOptions }),
   setProducts: (products) => set({ products }),
 }));
@@ -20,6 +22,8 @@ const useProduct = () => {
   const apiCalled = useRef<boolean>(false);
   const products = useProductStore((state) => state.products);
   const selectedOptions = useProductStore((state) => state.selectedOptions);
+  const allOptions = useProductStore((state) => state.allOptions);
+  const setAllOptions = useProductStore((state) => state.setAllOptions);
   const setSelectedOptions = useProductStore(
     (state) => state.setSelectedOptions
   );
@@ -30,11 +34,15 @@ const useProduct = () => {
       apiCalled.current = true;
       const products = await getProductByProductId(productId);
       setProducts(products);
+      getAllOptions(products);
     }
   };
 
-  const allOptions = useMemo(() => {
-    if (!products.length) return undefined;
+  const getAllOptions = (products: IProduct[]) => {
+    if (!products.length) {
+      onError("useProduct - getAllOptions - no products avaible");
+      return;
+    }
     const allOptions: TProductOptions = {};
     products.forEach((product) => {
       product.attributes.forEach((attribute) => {
@@ -61,13 +69,12 @@ const useProduct = () => {
         }
       });
     });
-
-    return allOptions;
-  }, [products]);
+    setAllOptions(allOptions);
+  };
 
   const selectedProduct: IProduct | undefined = useMemo(() => {
     if (!selectedOptions.length) return products[0];
-
+    console.log("selectedProduct");
     const matchingProduct = products.find((product) => {
       return product.attributes.every((option) => {
         const selectedOption = selectedOptions.find(
